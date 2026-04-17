@@ -1,0 +1,28 @@
+---
+import { siteConfig } from '../config/site';
+
+const year = new Date().getFullYear();
+const { github, linkedin } = siteConfig.socials;
+---
+
+<footer class="border-t border-zinc-800 py-8">
+  <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-zinc-500">
+    <p>© {year} {siteConfig.name}</p>
+
+    <div class="flex items-center gap-5">
+      {github && (
+        <a href={github} target="_blank" rel="noopener noreferrer" class="hover:text-zinc-300 transition-colors">
+          GitHub
+        </a>
+      )}
+      {linkedin && (
+        <a href={linkedin} target="_blank" rel="noopener noreferrer" class="hover:text-zinc-300 transition-colors">
+          LinkedIn
+        </a>
+      )}
+      <a href={`mailto:${siteConfig.contactEmail}`} class="hover:text-zinc-300 transition-colors">
+        {siteConfig.contactEmail}
+      </a>
+    </div>
+  </div>
+</footer>

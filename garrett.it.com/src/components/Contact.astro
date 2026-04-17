@@ -1,0 +1,114 @@
+---
+import { siteConfig } from '../config/site';
+
+const { headline, subtext } = siteConfig.contact;
+const { formspreeId } = siteConfig;
+---
+
+<section id="contact" class="py-24 bg-zinc-900/40">
+  <div class="max-w-2xl mx-auto px-6">
+    <p class="text-sky-400 text-xs font-mono uppercase tracking-widest mb-3">Contact</p>
+    <h2 class="text-3xl md:text-4xl font-bold text-zinc-100 mb-3">{headline}</h2>
+    <p class="text-zinc-400 mb-10">{subtext}</p>
+
+    <form
+      id="contact-form"
+      data-formspree-id={formspreeId}
+      class="flex flex-col gap-5"
+      novalidate
+    >
+      <div class="grid sm:grid-cols-2 gap-5">
+        <div class="flex flex-col gap-1.5">
+          <label for="name" class="text-sm text-zinc-300">Name</label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            required
+            placeholder="Jane Smith"
+            class="bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-2.5 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-sky-400 transition-colors"
+          />
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <label for="email" class="text-sm text-zinc-300">Email</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            placeholder="jane@company.com"
+            class="bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-2.5 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-sky-400 transition-colors"
+          />
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-1.5">
+        <label for="message" class="text-sm text-zinc-300">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          required
+          rows="5"
+          placeholder="Tell me about your project..."
+          class="bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-2.5 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-sky-400 transition-colors resize-none"
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        id="submit-btn"
+        class="self-start bg-sky-400 hover:bg-sky-300 disabled:opacity-50 disabled:cursor-not-allowed text-zinc-950 font-semibold px-8 py-3 rounded-lg transition-colors"
+      >
+        Send Message
+      </button>
+
+      <p id="form-status" class="text-sm hidden"></p>
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const status = document.getElementById('form-status') as HTMLParagraphElement;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formspreeId = form.dataset.formspreeId;
+    if (!formspreeId || formspreeId === 'YOUR_FORMSPREE_ID') {
+      status.textContent = 'Contact form is not yet configured.';
+      status.className = 'text-sm text-amber-400';
+      status.classList.remove('hidden');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    const data = Object.fromEntries(new FormData(form));
+
+    try {
+      const res = await fetch(`https://formspree.io/f/${formspreeId}`, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        form.reset();
+        status.textContent = "Message sent! I'll be in touch within one business day.";
+        status.className = 'text-sm text-sky-400';
+      } else {
+        throw new Error('Failed');
+      }
+    } catch {
+      status.textContent = 'Something went wrong. Please email me directly.';
+      status.className = 'text-sm text-red-400';
+    } finally {
+      status.classList.remove('hidden');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Message';
+    }
+  });
+</script>
