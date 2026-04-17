@@ -39,7 +39,7 @@ export const siteConfig = {
       icon: "ai",
       title: "AI Integration",
       description:
-        "Bring modern AI into your workflows, products, and teams — from proof-of-concept to production-ready systems that actually deliver value.",
+        "Bring modern AI into your workflows, products, and teams from proof-of-concept to production-ready systems that actually deliver value.",
     },
     {
       icon: "code",
