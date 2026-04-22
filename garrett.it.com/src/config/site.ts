@@ -5,9 +5,9 @@
 export const siteConfig = {
   // ── Identity ──────────────────────────────────────────────
   name: "Garrett Rose",
-  title: "Garrett Rose — Software Consulting",
+  title: "Garrett Rose Software Consulting",
   description:
-    "Software consulting, AI integration, and security for modern businesses.",
+    "Software consulting, AI integration, and security for businesses.",
 
   // ── Contact ───────────────────────────────────────────────
   contactEmail: "garrett.rose03@gmail.com",
@@ -18,8 +18,9 @@ export const siteConfig = {
 
   // ── Social links (set to "" to hide) ──────────────────────
   socials: {
-    github: "https://github.com/garrettrose",
-    linkedin: "",
+    github: "https://github.com/glrose",
+    linkedin: "https://www.linkedin.com/in/garrett-rose-b0974a131",
+    youtube: "https://www.youtube.com/@garrettrose",
   },
 
   // ── Hero section ──────────────────────────────────────────
@@ -39,13 +40,13 @@ export const siteConfig = {
       icon: "ai",
       title: "AI Integration",
       description:
-        "Bring modern AI into your workflows, products, and teams from proof-of-concept to production-ready systems that actually deliver value.",
+        "Bring modern AI into your workflows, products, and teams from proof-of-concept to production-ready systems.",
     },
     {
       icon: "code",
       title: "Software Consulting",
       description:
-        "Architecture reviews, technical strategy, and hands-on development. I help teams build better software, faster, without accumulating the wrong kind of debt.",
+        "Untangling your complex systems, fixing broken code, building new features and more.",
     },
     {
       icon: "shield",
@@ -58,14 +59,14 @@ export const siteConfig = {
   // ── About section ─────────────────────────────────────────
   about: {
     headline: "Building software that works. Securing what matters.",
-    body: "I'm Garrett Rose — a software consultant who works directly with founders, technical leads, and product teams. Whether you need to modernize a legacy system, integrate AI responsibly, or close security gaps before they become incidents, I focus on practical solutions that fit your business, not one-size-fits-all advice.",
+    body: "I'm Garrett Rose, a software engineer who works directly with you to build informed software solutions that fit your business logic.",
   },
 
   // ── Contact section ───────────────────────────────────────
   contact: {
-    headline: "Let's talk.",
+    headline: "Let's have a conversation",
     subtext:
-      "Tell me about your project and I'll get back to you within one business day.",
+      "Tell me about your project, inquiry, or opportunity and I'll get back to you as soon as possible.",
   },
 } as const;
 
