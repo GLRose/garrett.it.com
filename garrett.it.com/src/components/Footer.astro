@@ -2,7 +2,7 @@
 import { siteConfig } from '../config/site';
 
 const year = new Date().getFullYear();
-const { github, linkedin } = siteConfig.socials;
+const { github, linkedin, youtube } = siteConfig.socials;
 ---
 
 <footer class="border-t border-zinc-800 py-8">
@@ -18,6 +18,11 @@ const { github, linkedin } = siteConfig.socials;
       {linkedin && (
         <a href={linkedin} target="_blank" rel="noopener noreferrer" class="hover:text-zinc-300 transition-colors">
           LinkedIn
+        </a>
+      )}
+      {youtube && (
+        <a href={youtube} target="_blank" rel="noopener noreferrer" class="hover:text-zinc-300 transition-colors">
+          YouTube
         </a>
       )}
       <a href={`mailto:${siteConfig.contactEmail}`} class="hover:text-zinc-300 transition-colors">
