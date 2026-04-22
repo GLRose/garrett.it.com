@@ -58,7 +58,7 @@ export const siteConfig = {
 
   // ── About section ─────────────────────────────────────────
   about: {
-    headline: "Building software that works. Securing what matters.",
+    headline: "Making software systems work for you.",
     body: "I'm Garrett Rose, a software engineer who works directly with you to build informed software solutions that fit your business logic.",
   },
 
